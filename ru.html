@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMZO — 10 лет | Юбилейное приглашение</title>
+    <meta name="description"
+        content="Приглашение на 10-летний юбилей компании IMZO. 18 апреля 2026 года, начало в 11:00, на территории фабрики IMZO.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: '#D4AF37',
+                        darkGold: '#B8935A',
+                        ivory: '#FAF7F2',
+                        navy: '#1A1A2E',
+                        charcoal: '#2C2C3A',
+                        envelope: {
+                            bg: '#1C1C2A',
+                            flap: '#232336',
+                            bottom: '#18182A',
+                            dark: '#141422'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Cormorant Garamond', 'serif'],
+                        script: ['Great Vibes', 'cursive'],
+                        sans: ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* 3D envelope animation */
+        .perspective-1000 {
+            perspective: 1000px;
+        }
+
+        .preserve-3d {
+            transform-style: preserve-3d;
+        }
+
+        .backface-hidden {
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+
+        /* Seal pulse */
+        .seal-pulse {
+            animation: pulse-ring 2s infinite;
+        }
+
+        @keyframes pulse-ring {
+            0% {
+                filter: drop-shadow(0 0 0 rgba(212, 175, 55, 0.7));
+            }
+
+            70% {
+                filter: drop-shadow(0 0 25px rgba(212, 175, 55, 0));
+            }
+
+            100% {
+                filter: drop-shadow(0 0 0 rgba(212, 175, 55, 0));
+            }
+        }
+
+        /* Scroll reveal */
+        .reveal,
+        .reveal-left,
+        .reveal-right,
+        .reveal-scale {
+            opacity: 0;
+            transition: all 1s cubic-bezier(0.5, 0, 0, 1);
+        }
+
+        .reveal {
+            transform: translateY(40px);
+        }
+
+        .reveal-left {
+            transform: translateX(-40px);
+        }
+
+        .reveal-right {
+            transform: translateX(40px);
+        }
+
+        .reveal-scale {
+            transform: scale(0.9);
+        }
+
+        .reveal.active,
+        .reveal-left.active,
+        .reveal-right.active,
+        .reveal-scale.active {
+            opacity: 1;
+            transform: translateY(0) translateX(0) scale(1);
+        }
+
+        /* Gold particles */
+        .particle {
+            position: absolute;
+            background: #D4AF37;
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0;
+            animation: floatUp linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100svh) scale(0);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.5;
+                transform: translateY(80svh) scale(1);
+            }
+
+            90% {
+                opacity: 0.5;
+                transform: translateY(20svh) scale(1);
+            }
+
+            100% {
+                transform: translateY(-10svh) scale(0);
+                opacity: 0;
+            }
+        }
+
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Background pattern */
+        .bg-pattern {
+            background-color: #0F0F1A;
+            background-image:
+                radial-gradient(ellipse at 20% 50%, rgba(212, 175, 55, 0.03) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 20%, rgba(184, 147, 90, 0.04) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 80%, rgba(212, 175, 55, 0.02) 0%, transparent 50%);
+        }
+
+        /* Shimmer on gold text */
+        @keyframes shimmer {
+            0% {
+                background-position: -200% center;
+            }
+
+            100% {
+                background-position: 200% center;
+            }
+        }
+
+        .text-shimmer {
+            background: linear-gradient(90deg,
+                    #B8935A 0%,
+                    #D4AF37 25%,
+                    #F5E6A3 50%,
+                    #D4AF37 75%,
+                    #B8935A 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmer 4s linear infinite;
+        }
+
+        /* Glow border */
+        .glow-border {
+            box-shadow:
+                0 0 15px rgba(212, 175, 55, 0.15),
+                inset 0 0 15px rgba(212, 175, 55, 0.05);
+        }
+
+        /* Timeline connector */
+        .timeline-line {
+            background: linear-gradient(to bottom, transparent, #D4AF37 20%, #D4AF37 80%, transparent);
+        }
+
+        /* Confetti animation */
+        @keyframes confettiFall {
+            0% {
+                transform: translateY(-10vh) rotate(0deg);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(110vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        .confetti {
+            position: fixed;
+            top: -10px;
+            pointer-events: none;
+            z-index: 200;
+            animation: confettiFall linear forwards;
+        }
+    </style>
+</head>
+
+<body class="bg-[#0a0a14] antialiased overflow-x-hidden selection:bg-darkGold selection:text-white">
+
+    <!-- SCENE 1: ENVELOPE (Intro) -->
+    <div id="intro-screen"
+        class="fixed inset-0 z-50 flex items-center justify-center bg-[#0a0a14] transition-opacity duration-1000">
+
+        <div class="relative w-full h-[100dvh] max-w-md mx-auto overflow-hidden perspective-1000 bg-[#1a1a2e]">
+
+            <!-- Inner envelope -->
+            <div class="absolute inset-0 bg-gradient-to-b from-[#1a1a2e] to-[#0f0f1a] z-0"></div>
+
+            <!-- Letter inside -->
+            <div id="letter"
+                class="absolute top-[15%] left-4 right-4 bottom-[15%] bg-[#111122] shadow-[0_0_30px_rgba(212,175,55,0.15)] transition-all duration-1000 ease-in-out z-10 flex flex-col items-center justify-center border border-darkGold/30 rounded-sm">
+
+                <img src="10_years_gold.png" alt="IMZO 10 лет"
+                    class="w-28 h-28 mb-4 object-contain drop-shadow-[0_0_15px_rgba(212,175,55,0.3)]">
+
+                <div class="w-16 h-[1px] bg-darkGold/50 mt-4"></div>
+                <p class="font-sans text-sm tracking-[0.3em] text-gold/70 uppercase mt-4">Приглашение</p>
+            </div>
+
+            <!-- Side flaps -->
+            <div class="absolute inset-0 z-20 pointer-events-none drop-shadow-lg">
+                <div class="absolute inset-0 bg-[#16162a]" style="clip-path: polygon(0 0, 50.5% 50%, 0 100%);"></div>
+                <div class="absolute inset-0 bg-[#16162a]" style="clip-path: polygon(100% 0, 100% 100%, 49.5% 50%);">
+                </div>
+            </div>
+
+            <!-- Bottom flap -->
+            <div class="absolute inset-0 z-20 bg-[#1a1a30]" pointer-events-none"
+                style="clip-path: polygon(0 100%, 100% 100%, 50% 49%); filter: drop-shadow(0 -4px 8px rgba(0,0,0,0.3));">
+                <div class="absolute bottom-[10%] w-full text-center px-6">
+                    <p class="font-script text-3xl text-gold/90">С радостью</p>
+                    <p class="font-script text-4xl text-gold mt-[-5px]">приглашаем</p>
+                    <p class="font-script text-3xl text-gold/90 mt-[-5px] drop-shadow-sm">Вас на торжество</p>
+                </div>
+            </div>
+
+            <!-- Top flap (animated) -->
+            <div id="envelope-flap-wrapper"
+                class="absolute top-0 left-0 w-full h-[55%] origin-top z-30 transition-transform duration-1000 preserve-3d"
+                style="filter: drop-shadow(0 8px 12px rgba(0,0,0,0.4));">
+                <!-- Front side -->
+                <div class="absolute inset-0 bg-[#1e1e34] backface-hidden flex flex-col items-center pt-[10%] pb-4"
+                    style="clip-path: polygon(0 0, 100% 0, 50% 101%);">
+                    <img src="imzo_gold.png" alt="IMZO Logo"
+                        class="w-56 h-56 object-contain drop-shadow-[0_0_20px_rgba(212,175,55,0.3)] opacity-90">
+                </div>
+                <!-- Back side -->
+                <div class="absolute inset-0 bg-[#14142a] backface-hidden"
+                    style="transform: rotateX(180deg); clip-path: polygon(0 0, 100% 0, 50% 101%);"></div>
+            </div>
+
+            <!-- Wax seal (button) -->
+            <div
+                class="absolute top-[55%] left-1/2 -translate-x-1/2 -translate-y-1/2 z-40 flex items-center justify-center">
+                <div id="wax-seal"
+                    class="w-[110px] h-[110px] cursor-pointer transition-all duration-300 hover:scale-105 relative flex items-center justify-center group seal-pulse">
+
+                    <!-- Seal SVG -->
+                    <svg viewBox="0 0 100 100"
+                        class="absolute inset-0 w-full h-full drop-shadow-[0_5px_20px_rgba(212,175,55,0.4)]">
+                        <defs>
+                            <linearGradient id="goldSeal" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#F5E6A3" />
+                                <stop offset="20%" stop-color="#D4AF37" />
+                                <stop offset="50%" stop-color="#B8935A" />
+                                <stop offset="85%" stop-color="#8B7335" />
+                                <stop offset="100%" stop-color="#6B5625" />
+                            </linearGradient>
+                        </defs>
+                        <path
+                            d="M50,3 C74,1 91,15 95,35 C99,55 88,78 76,88 C62,100 40,95 24,88 C8,81 2,60 5,40 C8,18 26,5 50,3 Z"
+                            fill="url(#goldSeal)" />
+                    </svg>
+
+                    <!-- Inner circle -->
+                    <div
+                        class="relative w-[75px] h-[75px] rounded-full border-[1.5px] border-[#8B7335] flex items-center justify-center bg-gradient-to-br from-[#D4AF37] to-[#8B7335] shadow-[inset_0_3px_8px_rgba(0,0,0,0.4),0_1px_3px_rgba(255,255,255,0.2)]">
+                        <span
+                            class="font-sans font-bold text-[#0a0a14] text-[10px] tracking-wider drop-shadow-[0_1px_1px_rgba(255,255,255,0.3)]">ОТКРЫТЬ</span>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- SCENE 2: MAIN INVITATION -->
+    <div id="main-content"
+        class="hidden opacity-0 transition-opacity duration-1000 max-w-md mx-auto bg-pattern min-h-screen relative shadow-[0_0_60px_rgba(0,0,0,0.5)] pb-24 overflow-hidden">
+
+        <!-- Particles container -->
+        <div id="particles-container" class="absolute inset-0 pointer-events-none z-0"></div>
+
+        <!-- Audio Toggle Button -->
+        <button id="audio-toggle"
+            class="absolute top-6 right-6 z-50 w-10 h-10 rounded-full bg-white/5 backdrop-blur-sm border border-gold/30 flex items-center justify-center text-gold hover:bg-white/10 hover:scale-110 transition-all duration-300 shadow-[0_0_15px_rgba(212,175,55,0.15)]">
+            <!-- Sound ON Icon -->
+            <svg id="icon-sound-on" xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5 drop-shadow-[0_0_5px_rgba(212,175,55,0.5)]" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd"
+                    d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM14.657 2.929a1 1 0 011.414 0A9.972 9.972 0 0119 10a9.972 9.972 0 01-2.929 7.071 1 1 0 01-1.414-1.414A7.971 7.971 0 0017 10c0-2.21-.894-4.208-2.343-5.657a1 1 0 010-1.414zm-2.829 2.828a1 1 0 011.415 0A5.983 5.983 0 0115 10a5.984 5.984 0 01-1.757 4.243 1 1 0 01-1.415-1.415A3.984 3.984 0 0013 10a3.983 3.983 0 00-1.172-2.828 1 1 0 010-1.415z"
+                    clip-rule="evenodd" />
+            </svg>
+            <!-- Sound OFF Icon -->
+            <svg id="icon-sound-off" xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5 hidden drop-shadow-[0_0_5px_rgba(212,175,55,0.5)] text-gray-500" viewBox="0 0 20 20"
+                fill="currentColor">
+                <path fill-rule="evenodd"
+                    d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM12.293 7.293a1 1 0 011.414 0L15 8.586l1.293-1.293a1 1 0 111.414 1.414L16.414 10l1.293 1.293a1 1 0 01-1.414 1.414L15 11.414l-1.293 1.293a1 1 0 01-1.414-1.414L13.586 10l-1.293-1.293a1 1 0 010-1.414z"
+                    clip-rule="evenodd" />
+            </svg>
+        </button>
+
+        <!-- Decorative borders -->
+        <div
+            class="absolute top-3 left-3 right-3 bottom-3 border border-darkGold/20 rounded-t-full pointer-events-none">
+        </div>
+        <div
+            class="absolute top-5 left-5 right-5 bottom-5 border border-darkGold/10 rounded-t-full pointer-events-none">
+        </div>
+
+        <!-- Content -->
+        <div class="relative z-10 pt-20 px-4 md:pt-24 md:px-8 text-center flex flex-col items-center">
+
+            <!-- Logo -->
+            <img src="imzo_gold.png" alt="IMZO Logo"
+                class="w-48 h-48 mb-4 reveal object-contain drop-shadow-[0_0_25px_rgba(212,175,55,0.3)]">
+
+            <!-- Badge -->
+            <p class="font-sans text-xl tracking-[0.25em] uppercase mb-6 reveal text-gold/70 font-medium">
+                ДОБРО ПОЖАЛОВАТЬ!</p>
+
+            <!-- Heading -->
+            <h2 class="font-serif text-2xl md:text-2xl text-ivory/90 mb-6 reveal font-semibold">
+                Уважаемые сотрудники отдела Маркетинга</h2>
+
+            <p class="font-sans text-xl md:text-xl text-gray-400 leading-relaxed reveal max-w-sm mx-auto">
+                С радостью <span class="text-gold font-semibold">приглашаем Вас</span> на торжественное мероприятие,
+                посвященное
+                <span class="text-gold font-medium">10-летнему юбилею</span> компании <span
+                    class="text-gold font-medium">
+                    IMZO.</span>
+            </p>
+
+            <!-- Anniversary badge -->
+            <div class="my-12 md:my-16 reveal-scale w-full px-2">
+                <img src="10_years_gold.png" alt="IMZO 10 лет"
+                    class="w-44 h-44 md:w-56 md:h-56 mx-auto object-contain drop-shadow-[0_0_30px_rgba(212,175,55,0.3)]">
+
+                <div class="flex items-center justify-center gap-3 mt-6">
+                    <div class="w-12 md:w-20 h-[1px] bg-gradient-to-r from-transparent to-darkGold/60"></div>
+                    <span class="font-sans text-sm tracking-[0.4em] uppercase text-gold/60">2016 — 2026</span>
+                    <div class="w-12 md:w-20 h-[1px] bg-gradient-to-l from-transparent to-darkGold/60"></div>
+                </div>
+            </div>
+
+            <!-- Divider -->
+            <svg class="w-24 h-6 text-darkGold/40 mb-10 reveal-right" viewBox="0 0 100 20" fill="currentColor">
+                <path d="M50 10 L45 5 L50 0 L55 5 Z M20 10 L45 10 M55 10 L80 10" stroke="currentColor"
+                    stroke-width="0.5" />
+            </svg>
+
+            <!-- Event details card -->
+            <div
+                class="bg-white/5 backdrop-blur-sm p-5 md:p-7 rounded-2xl border border-gold/15 w-full reveal-left mb-8 relative overflow-hidden glow-border">
+                <div
+                    class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-darkGold to-transparent">
+                </div>
+
+                <p class="font-sans text-xl tracking-[0.3em] uppercase text-gold/60 mb-5 font-medium">
+                    Детали мероприятия</p>
+
+                <!-- Date -->
+                <div class="flex items-center justify-center gap-4 mb-6">
+                    <div class="text-right">
+                        <p class="font-serif text-5xl md:text-6xl text-gold font-semibold leading-none">18</p>
+                        <p class="font-sans text-2xl tracking-widest text-gray-400 uppercase mt-1">Апреля</p>
+                    </div>
+                    <div class="w-[1px] h-16 bg-darkGold/30"></div>
+                    <div class="text-left">
+                        <p class="font-serif text-5xl md:text-6xl text-ivory/90 font-semibold leading-none">11<span
+                                class="text-4xl md:text-5xl text-gold/60">:00</span></p>
+                        <p class="font-sans text-2xl tracking-widest text-gray-400 uppercase mt-1">Суббота</p>
+                    </div>
+                </div>
+
+                <!-- Calendar mini -->
+                <div class="bg-white/5 rounded-xl p-3 md:p-4 border border-gold/10 mb-4">
+                    <h3 class="font-serif text-lg md:text-xl text-ivory/80 mb-1 uppercase tracking-[0.3em]">Апрель</h3>
+                    <p class="font-sans text-xs tracking-[0.5em] text-gold/50 mb-3">2 0 2 6</p>
+
+                    <div
+                        class="grid grid-cols-7 gap-1 text-center text-[13px] md:text-xs uppercase tracking-wider font-sans text-gray-500 mb-2">
+                        <div>Пн</div>
+                        <div>Вт</div>
+                        <div>Ср</div>
+                        <div>Чт</div>
+                        <div>Пт</div>
+                        <div>Сб</div>
+                        <div>Вс</div>
+                    </div>
+                    <div
+                        class="grid grid-cols-7 gap-y-2 text-center text-sm md:text-basefont-sans text-gray-500 items-center">
+                        <!-- Week with April 13-19 -->
+                        <div>13</div>
+                        <div>14</div>
+                        <div>15</div>
+                        <div>16</div>
+                        <div>17</div>
+
+                        <!-- Highlighted date: 18 -->
+                        <div class="relative flex justify-center items-center">
+                            <span
+                                class="absolute w-8 h-8 md:w-9 md:h-9 bg-darkGold rounded-full animate-pulse opacity-20"></span>
+                            <span class="absolute w-8 h-8 md:w-9 md:h-9 border-2 border-darkGold rounded-full"></span>
+                            <span class="relative text-gold font-bold">18</span>
+                        </div>
+
+                        <div>19</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Countdown -->
+            <div class="mb-12 reveal w-full mt-4">
+                <p class="font-serif text-3xl md:text-4xl text-ivory/80 mb-6 md:mb-8">До начала осталось:</p>
+                <div class="flex justify-center gap-3 md:gap-4 flex-wrap">
+                    <div class="flex flex-col items-center">
+                        <div class="w-16 h-16 md:w-20 md:h-20 rounded-xl border border-darkGold/30 flex items-center justify-center text-2xl md:text-3xl font-serif text-gold shadow-sm bg-white/5 glow-border"
+                            id="days">00</div>
+                        <span
+                            class="text-xs md:text-sm uppercase text-gray-500 mt-2 tracking-widest font-medium">Дней</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="w-16 h-16 md:w-20 md:h-20 rounded-xl border border-darkGold/30 flex items-center justify-center text-2xl md:text-3xl font-serif text-gold shadow-sm bg-white/5 glow-border"
+                            id="hours">00</div>
+                        <span
+                            class="text-xs md:text-sm uppercase text-gray-500 mt-2 tracking-widest font-medium">Часов</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="w-16 h-16 md:w-20 md:h-20 rounded-xl border border-darkGold/30 flex items-center justify-center text-2xl md:text-3xl font-serif text-gold shadow-sm bg-white/5 glow-border"
+                            id="minutes">00</div>
+                        <span
+                            class="text-xs md:text-sm uppercase text-gray-500 mt-2 tracking-widest font-medium">Минут</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="w-16 h-16 md:w-20 md:h-20 rounded-xl border border-darkGold/30 flex items-center justify-center text-2xl md:text-3xl font-serif text-gold shadow-sm bg-white/5 glow-border"
+                            id="seconds">00</div>
+                        <span
+                            class="text-xs md:text-sm uppercase text-gray-500 mt-2 tracking-widest font-medium">Секунд</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Location -->
+            <div class="reveal-scale mt-6 md:mt-8 mb-10 md:mb-12 w-full">
+                <p class="font-sans text-xl md:text-xl tracking-[0.25em] uppercase text-gold/60 mb-3 font-medium">
+                    Место проведения</p>
+                <h3 class="font-serif text-3xl md:text-4xl text-ivory/90 font-semibold px-2">
+                    На фабрике IMZO</h3>
+                <p class="font-sans text-xl md:text-2xl text-gray-400 mt-2 mb-8">
+                    Время начала: <span class="text-gold font-semibold">11:00</span></p>
+
+                <!-- Factory photo -->
+                <img src="imzo_zdanie.webp" alt="IMZO fabrikasi"
+                    class="w-full rounded-2xl shadow-[0_0_30px_rgba(212,175,55,0.1)] border border-gold/15 object-cover mb-8 hover:scale-[1.02] transition-transform duration-500">
+
+                <!-- Map link button -->
+                <a href="https://maps.app.goo.gl/eVapfaitJtLLx4m88" target="_blank"
+                    class="inline-flex items-center justify-center gap-2 md:gap-3 bg-gradient-to-r from-darkGold to-gold text-navy px-6 py-4 md:px-10 md:py-5 rounded-full font-sans text-sm md:text-base tracking-widest uppercase font-semibold hover:shadow-[0_0_30px_rgba(212,175,55,0.3)] transition-all duration-300 shadow-xl group w-full max-w-[280px] md:max-w-xs mx-auto">
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                        class="h-5 w-5 md:h-6 md:w-6 group-hover:scale-110 transition-transform" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.243-4.243a8 8 0 1111.314 0z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                    Посмотреть на карте
+                </a>
+            </div>
+
+            <!-- Program highlights -->
+            <div class="reveal mt-8 mb-10 w-full">
+                <p class="font-sans text-xl md:text-2xl tracking-[0.25em] uppercase text-gold/60 mb-6 font-medium">
+                    Программа мероприятия</p>
+
+                <div class="relative">
+
+                    <div class="space-y-5 text-left">
+                        <!-- Item 1 -->
+                        <div class="flex items-start gap-4 pl-2">
+                            <div
+                                class="h-10 px-3 rounded-full bg-gold/10 border border-gold/30 flex items-center justify-center flex-shrink-0 z-10">
+                                <span class="text-gold text-lg font-bold tracking-wider">11:00-12:00</span>
+                            </div>
+                            <div>
+                                <p class="font-sans text-base text-ivory/80 font-medium">Сбор гостей</p>
+                                <p class="font-sans text-sm text-gray-500">Приветственная зона и напитки</p>
+                            </div>
+                        </div>
+                        <!-- Item 2 -->
+                        <div class="flex items-start gap-4 pl-2">
+                            <div
+                                class="h-10 px-3 rounded-full bg-gold/10 border border-gold/30 flex items-center justify-center flex-shrink-0 z-10">
+                                <span class="text-gold text-lg font-bold tracking-wider">12:00-13:00</span>
+                            </div>
+                            <div>
+                                <p class="font-sans text-base text-ivory/80 font-medium">Торжественное открытие</p>
+                                <p class="font-sans text-sm text-gray-500">Итоги 10-летия, награждение</p>
+                            </div>
+                        </div>
+                        <!-- Item 3 -->
+                        <div class="flex items-start gap-4 pl-2">
+                            <div
+                                class="h-10 px-3 rounded-full bg-gold/10 border border-gold/30 flex items-center justify-center flex-shrink-0 z-10">
+                                <span class="text-gold text-lg font-bold tracking-wider">13:00-13:30</span>
+                            </div>
+                            <div>
+                                <p class="font-sans text-base text-ivory/80 font-medium">Праздничный банкет</p>
+                                <p class="font-sans text-sm text-gray-500">Угощения и музыкальная программа</p>
+                            </div>
+                        </div>
+                        <!-- Item 4 -->
+                        <div class="flex items-start gap-4 pl-2">
+                            <div
+                                class="h-10 px-3 rounded-full bg-gold/10 border border-gold/30 flex items-center justify-center flex-shrink-0 z-10">
+                                <span class="text-gold text-lg font-bold tracking-wider">13:30-16:00</span>
+                            </div>
+                            <div>
+                                <p class="font-sans text-base text-ivory/80 font-medium">Шоу программа</p>
+                                <p class="font-sans text-sm text-gray-500">Конкурсы, шоу и сюрпризы</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Closing -->
+            <div class="mt-16 mb-8 reveal">
+                <div class="w-16 h-[1px] bg-darkGold/30 mx-auto mb-8"></div>
+                <p class="font-serif text-2xl md:text-3xl text-ivory/85 italic leading-relaxed">
+                    Будем искренне рады видеть вас<br>на нашем празднике!</p>
+                <div class="mt-8">
+                    <img src="imzo_gold.png" alt="IMZO" class="w-48 h-48 mx-auto object-contain opacity-40">
+                </div>
+            </div>
+
+
+            <!-- Dress code hint 
+            <div class="reveal-scale mt-4 mb-6 w-full">
+                <div class="bg-white/5 border border-gold/10 rounded-xl px-4 py-3 inline-block">
+                    <p class="font-sans text-xs text-gray-400">
+                        Dress-kod: <span class="text-gold/70 font-medium">Smart Casual</span>
+                    </p>
+                </div>
+            </div>-->
+
+        </div>
+
+    </div>
+
+    <!-- Background music -->
+    <audio id="bg-music" src="A Beautiful Story.wav" preload="auto" loop></audio>
+
+    <script>
+        // ENVELOPE OPEN ANIMATION
+        const seal = document.getElementById('wax-seal');
+        const flapWrapper = document.getElementById('envelope-flap-wrapper');
+        const letter = document.getElementById('letter');
+        const introScreen = document.getElementById('intro-screen');
+        const bgMusic = document.getElementById('bg-music');
+        const mainContent = document.getElementById('main-content');
+
+        // Confetti burst
+        function launchConfetti() {
+            const colors = ['#D4AF37', '#F5E6A3', '#B8935A', '#ffffff', '#FCEABB'];
+            const shapes = ['■', '●', '▲', '◆'];
+            for (let i = 0; i < 60; i++) {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                confetti.textContent = shapes[Math.floor(Math.random() * shapes.length)];
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.color = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.fontSize = (Math.random() * 14 + 8) + 'px';
+                confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                confetti.style.animationDelay = (Math.random() * 1.5) + 's';
+                confetti.style.opacity = Math.random() * 0.8 + 0.2;
+                document.body.appendChild(confetti);
+                setTimeout(() => confetti.remove(), 6000);
+            }
+        }
+
+        seal.addEventListener('click', () => {
+            // Play background music
+            bgMusic.play().catch((e) => console.log("Audio playback prevented by browser:", e));
+
+            // 1. Hide seal
+            seal.classList.remove('seal-pulse');
+            seal.style.transform = 'scale(0)';
+            seal.style.opacity = '0';
+
+            // 2. Open top flap
+            setTimeout(() => {
+                flapWrapper.style.transform = 'rotateX(180deg)';
+            }, 300);
+
+            // 3. Lift letter
+            setTimeout(() => {
+                letter.style.zIndex = '35';
+                letter.style.transform = 'translateY(-150px) scale(1.05)';
+            }, 1000);
+
+            // 4. Transition to main content
+            setTimeout(() => {
+                introScreen.style.opacity = '0';
+                mainContent.classList.remove('hidden');
+
+                setTimeout(() => {
+                    mainContent.style.opacity = '1';
+                    initScrollObserver();
+                    launchConfetti();
+                }, 50);
+
+                setTimeout(() => {
+                    introScreen.style.display = 'none';
+                }, 1000);
+            }, 2000);
+        });
+
+        // AUDIO TOGGLE
+        const audioToggle = document.getElementById('audio-toggle');
+        const iconSoundOn = document.getElementById('icon-sound-on');
+        const iconSoundOff = document.getElementById('icon-sound-off');
+
+        audioToggle.addEventListener('click', () => {
+            if (bgMusic.paused) {
+                bgMusic.play();
+                iconSoundOn.classList.remove('hidden');
+                iconSoundOff.classList.add('hidden');
+            } else {
+                bgMusic.pause();
+                iconSoundOn.classList.add('hidden');
+                iconSoundOff.classList.remove('hidden');
+            }
+        });
+
+        // COUNTDOWN TIMER
+        // Date: April 18, 2026, 11:00
+        const targetDate = new Date("April 18, 2026 11:00:00").getTime();
+
+        const countdownInterval = setInterval(() => {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            if (distance < 0) {
+                clearInterval(countdownInterval);
+                document.getElementById("days").innerText = "00";
+                document.getElementById("hours").innerText = "00";
+                document.getElementById("minutes").innerText = "00";
+                document.getElementById("seconds").innerText = "00";
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = days.toString().padStart(2, '0');
+            document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
+            document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
+            document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
+        }, 1000);
+
+        // SCROLL REVEAL OBSERVER
+        function initScrollObserver() {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15
+            };
+
+            const observer = new IntersectionObserver((entries, obs) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        obs.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        // GOLD PARTICLES
+        function initParticles() {
+            const container = document.getElementById('particles-container');
+            if (!container) return;
+
+            const particleCount = 20;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+
+                const size = Math.random() * 3 + 1.5;
+                const left = Math.random() * 100;
+                const duration = Math.random() * 15 + 10;
+                const delay = Math.random() * 10;
+
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${left}%`;
+                particle.style.animationDuration = `${duration}s`;
+                particle.style.animationDelay = `${delay}s`;
+
+                container.appendChild(particle);
+            }
+        }
+        initParticles();
+    </script>
+</body>
+
+</html>
